@@ -1,13 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile Page</title>
+    <link rel="stylesheet" href="css/mycss_web.css">
+    <link rel="stylesheet" href="css/mycss_tablet.css" media ="screen and (max-width: 800px)">
+                    <!-- new thing we didn't learn is background for page below-->
+    <style>
+        
+        .highlight{
+            background-color: green;
+            
+        }
+        body {
+            background-image: url("/Users/thurman/Downloads/Junior Year/WEBAPPDEV/Central_park.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-color: #106408;
+        }
+
+    </style>
+     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Menu Section with Anchor Links -->
+    <!-- Menu Section -->
     <h1>Menu</h1>
     <ul>
         <li><a href="#profile">Profile Information</a></li>
@@ -23,13 +45,12 @@
     <!-- Profile Info-->
     <h2 id="profile">Profile Information</h2>
     <p>Name: Thurman K. Patterson IV "TK"</p>
-    <img src="/Users/thurman/Downloads/IMG_7664.jpg" alt="Profile Picture" width="310" height="280">
-    <!-- Education Summary  -->
+    <img src="/Users/thurman/Downloads/IMG_7664.jpg" alt="Profile Picture" class="pfp">
     <h2 id="education">Education Summary</h2>
     <p></p>
     <ul>
-        <li>Pursuing bachelor's Degree</li>
-        <li>High School Diploma</li>
+        <li><span class="highlight">Pursuing bachelor's Degree</span></li>
+        <li><span class="highlight">High School Diploma</span></li>
     </ul>
 
     <!-- Work Experience  -->
@@ -37,7 +58,7 @@
     <p>Places I've worked.</p>
     <ul>
         <li>18 months retail</li>
-        <li>2 years of sales and recepetion at a gym</li>
+        <li>2 years of sales and reception at a gym</li>
     </ul>
 
     <!-- Programming Skills -->
@@ -49,7 +70,11 @@
 
     <!-- Interests -->
     <h2 id="interests">General Interests and Hobbies</h2>
-    <p>I enjoy playing sports, photography and reading.</p>
+     <div class="highlight-hobbies">
+     
+     <p style="color: rgb(33, 111, 33);">I enjoy playing sports, photography and reading.</p>
+   </div>
+    
     
 
     <!-- Favorite Song,TV show, movie-->

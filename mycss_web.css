@@ -1,0 +1,44 @@
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#main-header {
+    font-size: 2em;
+    text-align: center;
+
+}
+h1{ 
+    color: #30562f;
+}.box_table>table{
+    border-width: 1px;
+    
+    border-style: solid;
+
+    border-color: aqua;
+
+    border-collapse:collapse;
+
+    width: 50px;
+}
+
+
+div{
+    padding:20px;
+    background-color: #30562f;
+}
+
+ul {
+    list-style-type: square;
+}
+
+li{
+    margin-bottom: 10px;
+}
+
+img{
+    max-width: 80%;
+    height:auto;
+    border: 2px solid #444040;
+
+}

@@ -1,0 +1,10 @@
+@media screen and (max-width: 800px) {
+body {
+    font-size: 14px;
+    color: green;
+    background-color: darkgreen;
+}
+nav ul {flex-direction: column;
+
+}
+}
