@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Task List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Task List</h1>
+    <form id="task-form">
+        <input type="text" id="task-title" placeholder="Task Title" required>
+        <select id="task-priority">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        <button type="submit">Add Task</button>
+    </form>
+    <ul id="task-list"></ul>
+    <script src="script.js"></script>
+</body>
+</html>

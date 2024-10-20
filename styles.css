@@ -1,41 +1,14 @@
-/* styles.css */
 body {
-    color: white;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-#main-header {
-    font-size: 2em;
+h1 {
     text-align: center;
 }
-
-h1 { 
-    color: #30562f;
+ul {
+    list-style-type: none;
+    padding: 0;
 }
-
-.box_table > table {
-    border-width: 1px;
-    border-style: solid;
-    border-color: aqua;
-    border-collapse: collapse;
-    width: 50%;
-}
-/*YT vid bc readability was taking a hit*/
-.highlight-hobbies {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    padding: 10px;
-    background-color: #ffffff9c; 
-    border-radius: 28px;
-    display: inline-block;
-}
-
-.pfp{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #333;
+.completed {
+    text-decoration: line-through;
 }
