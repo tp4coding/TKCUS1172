@@ -1,1 +1,11 @@
+{
+  "quiz1": [
+    { "questionText": "What is JavaScript?", "type": "multiple-choice", "options": ["Programming Language", "Fruit", "Car"], "correctAnswer": "Programming Language" },
+    { "questionText": "Which HTML tag is used to link JavaScript?", "type": "text", "correctAnswer": "<script>" }
+  ],
+  "quiz2": [
+    { "questionText": "Which CSS property is used to change text color?", "type": "multiple-choice", "options": ["color", "font-size", "text-align"], "correctAnswer": "color" },
+    { "questionText": "What does CSS stand for?", "type": "text", "correctAnswer": "Cascading Style Sheets" }
+  ]
+}
 
