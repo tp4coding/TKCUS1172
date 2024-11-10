@@ -80,7 +80,7 @@
 
             async function loadQuizData(quizId) {
                 try {
-                    const response = await fetch(`https://my-json-server.typicode.com/your-github-username/your-repository/${quizId}`);
+                    const response = await fetch(`https://my-json-server.typicode.com/tp4coding/TKCUS1172/${quizId}`);
                     if (!response.ok) throw new Error('Network response was not ok');
                     return await response.json();
                 } catch (error) {
