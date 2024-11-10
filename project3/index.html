@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/project3/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Online Quiz App</title>
 </head>
 <body>
@@ -58,6 +58,7 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="js/app.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const startTemplate = Handlebars.compile(document.getElementById('start-template').innerHTML);
@@ -101,61 +102,59 @@
                 loadQuestion(questions[currentQuestionIndex]);
 
                 function loadQuestion(question) {
-    document.getElementById('app-container').innerHTML = questionTemplate({
-        questionNumber: currentQuestionIndex + 1,
-        questionText: question.questionText,
-        isMultipleChoice: question.type === 'multiple-choice',
-        isImageChoice: question.type === 'image-choice',
-        options: question.options
-    });
-    document.getElementById('score-display').innerText = score;
+                    document.getElementById('app-container').innerHTML = questionTemplate({
+                        questionNumber: currentQuestionIndex + 1,
+                        questionText: question.questionText,
+                        isMultipleChoice: question.type === 'multiple-choice',
+                        isImageChoice: question.type === 'image-choice',
+                        options: question.options
+                    });
+                    document.getElementById('score-display').innerText = score;
 
-    document.getElementById('submit-answer').addEventListener('click', () => {
-        let userAnswer;
-        if (question.type === 'multiple-choice' || question.type === 'image-choice') {
-            userAnswer = document.querySelector('input[name="answer"]:checked')?.value;
-        } else {
-            userAnswer = document.getElementById('answer-input').value.trim();
-        }
+                    document.getElementById('submit-answer').addEventListener('click', () => {
+                        let userAnswer;
+                        if (question.type === 'multiple-choice' || question.type === 'image-choice') {
+                            userAnswer = document.querySelector('input[name="answer"]:checked')?.value;
+                        } else {
+                            userAnswer = document.getElementById('answer-input').value.trim();
+                        }
 
-        if (userAnswer) {
-            if (userAnswer === question.correctAnswer) {
-                score++;
-                alert("Correct! Brilliant!");
-                loadNextQuestion();
-            } else {
-                showIncorrectAnswerFeedback(question.correctAnswer);
-            }
-        } else {
-            alert("Please provide an answer before proceeding.");
-        }
-    });
-}
+                        if (userAnswer) {
+                            if (userAnswer === question.correctAnswer) {
+                                score++;
+                                alert("Correct! Brilliant!");
+                                loadNextQuestion();
+                            } else {
+                                showIncorrectAnswerFeedback(question.correctAnswer);
+                            }
+                        } else {
+                            alert("Please provide an answer before proceeding.");
+                        }
+                    });
+                }
 
-function showIncorrectAnswerFeedback(correctAnswer) {
-    document.getElementById('app-container').innerHTML = `
-        <div class="text-center">
-            <h2>Incorrect Answer</h2>
-            <p>The correct answer was: ${correctAnswer}</p>
-            <button class="btn btn-primary mt-3" id="got-it-button">Got it</button>
-        </div>
-    `;
-    document.getElementById('got-it-button').addEventListener('click', () => {
-        loadNextQuestion();
-    });
-}
+                function showIncorrectAnswerFeedback(correctAnswer) {
+                    document.getElementById('app-container').innerHTML = `
+                        <div class="text-center">
+                            <h2>Incorrect Answer</h2>
+                            <p>The correct answer was: ${correctAnswer}</p>
+                            <button class="btn btn-primary mt-3" id="got-it-button">Got it</button>
+                        </div>
+                    `;
+                    document.getElementById('got-it-button').addEventListener('click', () => {
+                        loadNextQuestion();
+                    });
+                }
 
-function loadNextQuestion() {
-    currentQuestionIndex++;
-    if (currentQuestionIndex < questions.length) {
-        loadQuestion(questions[currentQuestionIndex]);
-    } else {
-        clearInterval(timerInterval);
-        endQuiz(userName, score, questions.length);
-    }
-}
-
-            
+                function loadNextQuestion() {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < questions.length) {
+                        loadQuestion(questions[currentQuestionIndex]);
+                    } else {
+                        clearInterval(timerInterval);
+                        endQuiz(userName, score, questions.length);
+                    }
+                }
 
                 function endQuiz(userName, score, totalQuestions) {
                     const message = score / totalQuestions >= 0.8
