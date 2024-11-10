@@ -64,17 +64,25 @@
             const startTemplate = Handlebars.compile(document.getElementById('start-template').innerHTML);
             const questionTemplate = Handlebars.compile(document.getElementById('question-template').innerHTML);
 
-            document.getElementById('app-container').innerHTML = startTemplate();
+            let timerInterval;
 
-            document.getElementById('start-form').addEventListener('submit', async (event) => {
-                event.preventDefault();
-                const userName = document.getElementById('username').value.trim();
-                const selectedQuiz = document.getElementById('quiz-select').value;
+            function loadStartScreen() {
+                document.getElementById('app-container').innerHTML = startTemplate();
+            }
 
-                if (userName) {
-                    const questions = await loadQuizData(selectedQuiz);
-                    if (questions) {
-                        startQuiz(userName, questions);
+            loadStartScreen();
+
+            document.getElementById('app-container').addEventListener('submit', async (event) => {
+                if (event.target && event.target.id === 'start-form') {
+                    event.preventDefault();
+                    const userName = document.getElementById('username').value.trim();
+                    const selectedQuiz = document.getElementById('quiz-select').value;
+
+                    if (userName) {
+                        const questions = await loadQuizData(selectedQuiz);
+                        if (questions) {
+                            startQuiz(userName, questions);
+                        }
                     }
                 }
             });
@@ -94,7 +102,10 @@
                 let currentQuestionIndex = 0;
                 let score = 0;
                 let timeElapsed = 0;
-                const timerInterval = setInterval(() => {
+
+                if (timerInterval) clearInterval(timerInterval);
+
+                timerInterval = setInterval(() => {
                     timeElapsed++;
                     document.getElementById('time-elapsed').innerText = timeElapsed;
                 }, 1000);
@@ -157,13 +168,14 @@
                 }
 
                 function endQuiz(userName, score, totalQuestions) {
+                    clearInterval(timerInterval);
                     const message = score / totalQuestions >= 0.8
                         ? `Congratulations ${userName}! You passed the quiz!`
                         : `Sorry ${userName}, you failed the quiz.`;
                     document.getElementById('app-container').innerHTML = `<div class="text-center"><h2>${message}</h2><button class="btn btn-primary mt-3" id="restart-quiz">Return to Start</button></div>`;
 
                     document.getElementById('restart-quiz').addEventListener('click', () => {
-                        document.getElementById('app-container').innerHTML = startTemplate();
+                        loadStartScreen();
                     });
                 }
             }
